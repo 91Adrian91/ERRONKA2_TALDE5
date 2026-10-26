@@ -48,7 +48,7 @@ final class AuthenticationViewsTest extends TestCase
         self::assertStringContainsString('method="post"', $html);
         self::assertStringContainsString('name=username', $html);
         self::assertStringContainsString('type=password name=password', $html);
-        self::assertStringContainsString('/index.php?action=login', $html);
+        self::assertStringContainsString('action="index.php?action=login"', $html);
     }
 
     public function testAuthenticatedUserDoesNotSeeLoginForm(): void
@@ -57,6 +57,23 @@ final class AuthenticationViewsTest extends TestCase
         $html = $this->render('login');
         self::assertStringContainsString('You are already logged in', $html);
         self::assertStringNotContainsString('<form', $html);
+    }
+
+    public function testLoginActionDoesNotAllowHtmlInjectionFromRequestPath(): void
+    {
+        $_SERVER['PHP_SELF'] = '/index.php/"><script>document.title="XSS"</script><span data-x="';
+        $html = $this->render('login');
+        $document = new DOMDocument();
+        $previous = libxml_use_internal_errors(true);
+        try {
+            $document->loadHTML($html);
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($previous);
+        }
+        self::assertSame(0, $document->getElementsByTagName('script')->length);
+        self::assertSame(1, $document->getElementsByTagName('form')->length);
+        self::assertSame('index.php?action=login', $document->getElementsByTagName('form')->item(0)->getAttribute('action'));
     }
 
     public function testUnauthenticatedSessionCanStillSeeLoginForm(): void

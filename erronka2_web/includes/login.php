@@ -29,7 +29,7 @@ else{
   <div align=center>
     <fieldset style=width:300;>
     <legend><b>Login</b></legend>
-        <form action="<?php echo $_SERVER['PHP_SELF']."?action=login"; ?>" method="post">
+        <form action="index.php?action=login" method="post">
             <br>
             Username/Email: <input type=text name=username><br>
             Password: <input type=password name=password><br>

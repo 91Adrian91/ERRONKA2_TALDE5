@@ -1,0 +1,49 @@
+name: PHP CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    name: PHP checks (${{ matrix.php }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.3', '8.5']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: PHP eta Composer prestatu
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, dom, xml, xmlwriter, mysqli
+          coverage: none
+          tools: composer:v2
+      - name: Mendekotasunak instalatu
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Composer konfigurazioa egiaztatu
+        run: composer validate --strict
+      - name: PHP sintaxia egiaztatu
+        run: composer lint
+      - name: Analisi estatikoa
+        if: ${{ !cancelled() }}
+        run: composer analyse
+      - name: Unitate-probak
+        if: ${{ !cancelled() }}
+        run: composer test -- --log-junit build/junit.xml
+      - name: Proben emaitzak gorde
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-tests-${{ matrix.php }}
+          path: build/junit.xml
+          if-no-files-found: warn

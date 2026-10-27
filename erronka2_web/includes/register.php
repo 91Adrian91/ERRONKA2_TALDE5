@@ -1,122 +1,42 @@
 <?php
-// assign defaults
-$data = array('email' 		=> 'email',
-			  'firstname' 	=> 'nombre',
-			  'lastname' 	=> 'apellidos',
-			  'postcode' 	=> 'codigo postal',
-			  'city' 		=> 'ciudad',
-			  'stateProv' 	=> 'provincia',
-			  'country'		=> 'pais',
-			  'telephone' 	=> 'telefono',
-			  'password' 	=> 'contraseña',
-			  'password2' 	=> 'repetir contraseña',
-			  'imagen'      => ''
-);
-$error = array('email' 	  => '',
-			  'firstname' => '',
-			  'lastname'  => '',
-			  'city'	  => '',
-			  'stateProv' => '',
-			  'country'	  => '',
-			  'postcode'  => '',
-			  'telephone' => '',
-			  'password'  => '',
-);
-if (isset($_POST['data'])) {
-	$data = $_POST['data'];
+require_once __DIR__ . '/helpers.php';
 
-    $path = "perfiles/".basename($_FILES['imagen']['name']);
-    move_uploaded_file($_FILES['imagen']['tmp_name'], $path);
-    $data['imagen'] = basename($_FILES['imagen']['name']);
-
-    $sql = "INSERT INTO users(username, password, izena, abizena, hiria, lurraldea, herrialdea, postakodea, telefonoa, irudia) VALUES (";
-    $sql .= "'" . $data['email'] . "', ";
-    $sql .= "'" . md5($data['password'] ). "', ";
-    $sql .= "'" . $data['firstname'] . "', ";
-    $sql .= "'" . $data['lastname'] . "', ";
-    $sql .= "'" . $data['city'] . "', ";
-    $sql .= "'" . $data['stateProv'] . "', ";
-    $sql .= "'" . $data['country'] . "', ";
-    $sql .= "'" . $data['postcode'] . "', ";
-    $sql .= "'" . $data['telephone'] . "', ";
-    $sql .= "'" . $data['imagen']. "')";
-    if (!mysqli_query($conx,"$sql"))
-    {
-        die('Error: ' . mysqli_error());
+$data = ['email' => '', 'firstname' => '', 'lastname' => '', 'postcode' => '', 'city' => '', 'stateProv' => '', 'country' => '', 'telephone' => ''];
+$error = '';
+if (isset($_POST['data']) && is_array($_POST['data'])) {
+    foreach ($data as $key => $value) {
+        $data[$key] = is_string($_POST['data'][$key] ?? null) ? $_POST['data'][$key] : '';
     }
-    else {
-        header("Location: index.php");
+    $password = (string) ($_POST['data']['password'] ?? '');
+    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL) || mb_strlen($data['email']) > 30 || strlen($password) < 8 || $password !== ($_POST['data']['password2'] ?? '')) {
+        $error = 'Helbide elektronikoa eta pasahitzak egiaztatu (gutxienez 8 karaktere).';
+    } else {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $image = imageUpload('imagen', __DIR__ . '/../perfiles');
+        $statement = mysqli_prepare($conx, 'INSERT INTO users (username, password, izena, abizena, hiria, lurraldea, herrialdea, postakodea, telefonoa, irudia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        mysqli_stmt_bind_param($statement, 'ssssssssss', $data['email'], $hash, $data['firstname'], $data['lastname'], $data['city'], $data['stateProv'], $data['country'], $data['postcode'], $data['telephone'], $image);
+        mysqli_stmt_execute($statement);
+        mysqli_stmt_close($statement);
+        redirectPage('index.php');
     }
 }
 ?>
-	<div class="content">
-	<br/>
-	<div class="register">
-
-		<h2>Erregistroa egin</h2>
-		<br/>
-
-		<b>Introduce la información.</b>
-		<br/>
-		<form action="<?php echo $_SERVER['PHP_SELF']."?action=register"; ?>" method="POST" enctype="multipart/form-data">
-			<p>
-				<label>Email/username: </label>
-				<input type="text" name="data[email]" value="<?php echo $data['email']; ?>" />
-				<?php if ($error['email']) echo '<p>', $error['email']; ?>
-			<p>
-			<p>
-				<label>Izena: </label>
-				<input type="text" name="data[firstname]" value="<?php echo $data['firstname']; ?>" />
-				<?php if ($error['firstname']) echo '<p>', $error['firstname']; ?>
-			<p>
-			<p>
-				<label>Abizena: </label>
-				<input type="text" name="data[lastname]" value="<?php echo $data['lastname']; ?>" />
-				<?php if ($error['lastname']) echo '<p>', $error['lastname']; ?>
-			<p>
-			<p>
-				<label>Hiria: </label>
-				<input type="text" name="data[city]" value="<?php echo $data['city']; ?>" />
-				<?php if ($error['city']) echo '<p>', $error['city']; ?>
-			<p>
-			<p>
-				<label>Lurraldea: </label>
-				<input type="text" name="data[stateProv]" value="<?php echo $data['stateProv']; ?>" />
-				<?php if ($error['stateProv']) echo '<p>', $error['stateProv']; ?>
-			<p>
-			<!-- // *** validation: implement a database lookup -->
-			<p>
-				<label>Herrialdea: </label>
-				<input type="text" name="data[country]" value="<?php echo $data['country']; ?>" />
-				<?php if ($error['country']) echo '<p>', $error['country']; ?>
-			<p>
-			<p>
-				<label>Postakodea: </label>
-				<input type="text" name="data[postcode]" value="<?php echo $data['postcode']; ?>" />
-				<?php if ($error['postcode']) echo '<p>', $error['postcode']; ?>
-			<p>
-			<p>
-				<label>Telefonoa: </label>
-				<input type="text" name="data[telephone]" value="<?php echo $data['telephone']; ?>" />
-				<?php if ($error['telephone']) echo '<p>', $error['telephone']; ?>
-			<p>
-			<p>
-				<label>Pasahitza: </label>
-				<input type="text" name="data[password]" value="<?php echo $data['password']; ?>" />
-				<?php if ($error['password']) echo '<p>', $error['password']; ?>
-			<p>
-            <p>
-                <label>Pasahitza errepikatu: </label>
-                <input type="text" name="data[password2]" value="<?php echo $data['password2']; ?>" />
-            <p>
-            <p>
-                <label>Irudia aukeratu:</label>
-                <input name="imagen" type="file" />
-            <p>
-			<p>
-				<input type="reset" name="data[clear]" value="Clear" class="button"/>
-				<input type="submit" name="data[submit]" value="Submit" class="button marL10"/>
-			<p>
-		</form>
-	</div>
+<div class="register registration-form">
+    <h2>Erregistroa egin</h2>
+    <p><?php echo htmlText($error); ?></p>
+    <form action="index.php?action=register" method="post" enctype="multipart/form-data">
+        <p><label for="register-email">Email/username:</label><input type="email" name="data[email]" id="register-email" value="<?php echo htmlText($data['email']); ?>" maxlength="30" autocomplete="username" required></p>
+        <p><label for="register-firstname">Izena:</label><input type="text" name="data[firstname]" id="register-firstname" value="<?php echo htmlText($data['firstname']); ?>"></p>
+        <p><label for="register-lastname">Abizena:</label><input type="text" name="data[lastname]" id="register-lastname" value="<?php echo htmlText($data['lastname']); ?>"></p>
+        <p><label for="register-city">Hiria:</label><input type="text" name="data[city]" id="register-city" value="<?php echo htmlText($data['city']); ?>"></p>
+        <p><label for="register-state">Lurraldea:</label><input type="text" name="data[stateProv]" id="register-state" value="<?php echo htmlText($data['stateProv']); ?>"></p>
+        <p><label for="register-country">Herrialdea:</label><input type="text" name="data[country]" id="register-country" value="<?php echo htmlText($data['country']); ?>"></p>
+        <p><label for="register-postcode">Postakodea:</label><input type="text" name="data[postcode]" id="register-postcode" value="<?php echo htmlText($data['postcode']); ?>" required></p>
+        <p><label for="register-telephone">Telefonoa:</label><input type="tel" name="data[telephone]" id="register-telephone" value="<?php echo htmlText($data['telephone']); ?>" required></p>
+        <p><label for="register-password">Pasahitza:</label><input type="password" name="data[password]" id="register-password" minlength="8" autocomplete="new-password" required></p>
+        <p><label for="register-confirm">Pasahitza errepikatu:</label><input type="password" name="data[password2]" id="register-confirm" minlength="8" autocomplete="new-password" required></p>
+        <p><label for="register-image">Irudia:</label><input type="file" name="imagen" id="register-image" accept="image/png,image/jpeg,image/gif,image/webp"></p>
+        <button type="reset">Clear</button>
+        <input type="submit" name="submit" value="Submit">
+    </form>
 </div>

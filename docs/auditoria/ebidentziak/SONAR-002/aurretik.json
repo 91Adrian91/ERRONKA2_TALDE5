@@ -1,0 +1,876 @@
+[
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 45
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 46
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellpadding\" attribute.",
+    "line": 46
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellspacing\" attribute.",
+    "line": 46
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S5256",
+    "message": "Add \"\u003cth\u003e\" headers to this \"\u003ctable\u003e\".",
+    "line": 46
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"valign\" attribute.",
+    "line": 48
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 48
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 52
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 53
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 54
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"valign\" attribute.",
+    "line": 62
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 62
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 67
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 68
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 69
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellpadding\" attribute.",
+    "line": 75
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellspacing\" attribute.",
+    "line": 75
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 75
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "Web:S5256",
+    "message": "Add \"\u003cth\u003e\" headers to this \"\u003ctable\u003e\".",
+    "line": 75
+  },
+  {
+    "file": "includes/description.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 34
+  },
+  {
+    "file": "includes/description.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 50
+  },
+  {
+    "file": "includes/description.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 56
+  },
+  {
+    "file": "includes/login.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 29
+  },
+  {
+    "file": "includes/login.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 34
+  },
+  {
+    "file": "includes/login.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 35
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 31
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellpadding\" attribute.",
+    "line": 31
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellspacing\" attribute.",
+    "line": 31
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 31
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S5256",
+    "message": "Add \"\u003cth\u003e\" headers to this \"\u003ctable\u003e\".",
+    "line": 31
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 37
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"valign\" attribute.",
+    "line": 37
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 37
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"border\" attribute.",
+    "line": 40
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:ImgWithoutAltCheck",
+    "message": "Provide alternative text for this element.",
+    "line": 40
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"valign\" attribute.",
+    "line": 44
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 44
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 63
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellpadding\" attribute.",
+    "line": 63
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellspacing\" attribute.",
+    "line": 63
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 63
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S5256",
+    "message": "Add \"\u003cth\u003e\" headers to this \"\u003ctable\u003e\".",
+    "line": 63
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 64
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 64
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 19
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellpadding\" attribute.",
+    "line": 19
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellspacing\" attribute.",
+    "line": 19
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 19
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S5256",
+    "message": "Add \"\u003cth\u003e\" headers to this \"\u003ctable\u003e\".",
+    "line": 19
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 27
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"valign\" attribute.",
+    "line": 27
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 27
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"border\" attribute.",
+    "line": 30
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:ImgWithoutAltCheck",
+    "message": "Provide alternative text for this element.",
+    "line": 30
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"valign\" attribute.",
+    "line": 34
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 34
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:ImgWithoutAltCheck",
+    "message": "Provide alternative text for this element.",
+    "line": 48
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 53
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellpadding\" attribute.",
+    "line": 53
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellspacing\" attribute.",
+    "line": 53
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 53
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S5256",
+    "message": "Add \"\u003cth\u003e\" headers to this \"\u003ctable\u003e\".",
+    "line": 53
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 54
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 54
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 57
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 57
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 63
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 64
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 68
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 69
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 73
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 74
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 78
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 79
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 83
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 84
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 89
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 90
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 94
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 95
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 99
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 100
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 104
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 105
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 109
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 110
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:S6853",
+    "message": "A form label must be associated with a control and have accessible text.",
+    "line": 113
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 114
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 117
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 25
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"width\" attribute.",
+    "line": 26
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellpadding\" attribute.",
+    "line": 26
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"cellspacing\" attribute.",
+    "line": 26
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 26
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S5256",
+    "message": "Add \"\u003cth\u003e\" headers to this \"\u003ctable\u003e\".",
+    "line": 26
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"valign\" attribute.",
+    "line": 28
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 28
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 32
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 33
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 34
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 35
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:InputWithoutLabelCheck",
+    "message": "Add an \"id\" attribute to this input field and associate it with a label.",
+    "line": 38
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"valign\" attribute.",
+    "line": 44
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"align\" attribute.",
+    "line": 44
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:S1827",
+    "message": "Remove this deprecated \"border\" attribute.",
+    "line": 58
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "Web:ImgWithoutAltCheck",
+    "message": "Provide alternative text for this element.",
+    "line": 58
+  },
+  {
+    "file": "conf.php",
+    "rule": "php:S1780",
+    "message": "Remove this closing tag \"?\u003e\".",
+    "line": 25
+  },
+  {
+    "file": "conf.php",
+    "rule": "php:S113",
+    "message": "Add a new line at the end of this file."
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 14
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 25
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 36
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "php:S113",
+    "message": "Add a new line at the end of this file."
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "php:S1192",
+    "message": "Define a constant instead of duplicating this literal \"Location: \" 6 times.",
+    "line": 4
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "php:S1192",
+    "message": "Define a constant instead of duplicating this literal \"?action\u003daccount\" 4 times.",
+    "line": 10
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "php:S4790",
+    "message": "Make sure this weak hash algorithm is not used in a sensitive context here.",
+    "line": 13
+  },
+  {
+    "file": "includes/account.php",
+    "rule": "php:S4790",
+    "message": "Make sure this weak hash algorithm is not used in a sensitive context here.",
+    "line": 23
+  },
+  {
+    "file": "includes/description.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 15
+  },
+  {
+    "file": "includes/description.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 26
+  },
+  {
+    "file": "includes/description.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 40
+  },
+  {
+    "file": "includes/description.php",
+    "rule": "php:S113",
+    "message": "Add a new line at the end of this file."
+  },
+  {
+    "file": "includes/description.php",
+    "rule": "php:S125",
+    "message": "Remove this commented out code.",
+    "line": 3
+  },
+  {
+    "file": "includes/login.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 11
+  },
+  {
+    "file": "includes/login.php",
+    "rule": "php:S4790",
+    "message": "Make sure this weak hash algorithm is not used in a sensitive context here.",
+    "line": 11
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "php:S105",
+    "message": "Replace all tab characters in this file by sequences of white-spaces."
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 10
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "php:S113",
+    "message": "Add a new line at the end of this file."
+  },
+  {
+    "file": "includes/main.php",
+    "rule": "php:S1155",
+    "message": "Use empty() to check whether the array is empty or not.",
+    "line": 17
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 22
+  },
+  {
+    "file": "includes/main_orig.php",
+    "rule": "php:S113",
+    "message": "Add a new line at the end of this file."
+  },
+  {
+    "file": "includes/mysql.php",
+    "rule": "php:S1780",
+    "message": "Remove this closing tag \"?\u003e\".",
+    "line": 7
+  },
+  {
+    "file": "includes/mysql.php",
+    "rule": "php:S113",
+    "message": "Add a new line at the end of this file."
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S105",
+    "message": "Replace all tab characters in this file by sequences of white-spaces."
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 43
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S121",
+    "message": "Add curly braces around the nested statement(s).",
+    "line": 65
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S121",
+    "message": "Add curly braces around the nested statement(s).",
+    "line": 70
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S121",
+    "message": "Add curly braces around the nested statement(s).",
+    "line": 75
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S121",
+    "message": "Add curly braces around the nested statement(s).",
+    "line": 80
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S121",
+    "message": "Add curly braces around the nested statement(s).",
+    "line": 85
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S121",
+    "message": "Add curly braces around the nested statement(s).",
+    "line": 91
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S121",
+    "message": "Add curly braces around the nested statement(s).",
+    "line": 96
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S121",
+    "message": "Add curly braces around the nested statement(s).",
+    "line": 101
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S121",
+    "message": "Add curly braces around the nested statement(s).",
+    "line": 106
+  },
+  {
+    "file": "includes/register.php",
+    "rule": "php:S4790",
+    "message": "Make sure this weak hash algorithm is not used in a sensitive context here.",
+    "line": 34
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 7
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 10
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "php:S2077",
+    "message": "Make sure that formatting this SQL query is safe here.",
+    "line": 18
+  },
+  {
+    "file": "includes/updel.php",
+    "rule": "php:S1192",
+    "message": "Define a constant instead of duplicating this literal \"images/\" 3 times.",
+    "line": 9
+  }
+]

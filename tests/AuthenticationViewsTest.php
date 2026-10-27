@@ -46,8 +46,8 @@ final class AuthenticationViewsTest extends TestCase
     {
         $html = $this->render('login');
         self::assertStringContainsString('method="post"', $html);
-        self::assertStringContainsString('name=username', $html);
-        self::assertStringContainsString('type=password name=password', $html);
+        self::assertStringContainsString('name="username"', $html);
+        self::assertStringContainsString('type="password" name="password"', $html);
         self::assertStringContainsString('action="index.php?action=login"', $html);
     }
 
@@ -80,7 +80,7 @@ final class AuthenticationViewsTest extends TestCase
     {
         $_SESSION = ['admin' => 0];
         $html = $this->render('login');
-        self::assertStringContainsString('name=username', $html);
+        self::assertStringContainsString('name="username"', $html);
         self::assertStringNotContainsString('You are already logged in', $html);
     }
 
@@ -88,9 +88,9 @@ final class AuthenticationViewsTest extends TestCase
     {
         $_SESSION = ['admin' => 1, 'username' => 'user@example.test'];
         $html = $this->render('account');
-        self::assertStringContainsString('type=password name=newpass', $html);
-        self::assertStringContainsString('type=password name=confnewpass', $html);
-        self::assertStringNotContainsString('name=newuser', $html);
+        self::assertStringContainsString('type="password" name="newpass"', $html);
+        self::assertStringContainsString('type="password" name="confnewpass"', $html);
+        self::assertStringNotContainsString('name="newuser"', $html);
         self::assertStringNotContainsString('deleteuser=', $html);
     }
 }

@@ -1,46 +1,37 @@
 <?php
+require_once __DIR__ . '/helpers.php';
 
-if(isset($_SESSION['admin']) && ($_SESSION['admin']==1)){
-
-
-  echo "<div align=center><h5>You are already logged in</h5></div>";
-
-}
-else{
-    if(isset($_POST['submit'])){
-        $creds = mysqli_query($conx,"SELECT * FROM users WHERE username='".$_POST['username']."' AND password='".md5($_POST['password'])."'");
-
-        $creds = mysqli_fetch_array($creds);
-        if($creds){
-            $_SESSION['username'] = $creds['username'];
-            $_SESSION['password'] = $creds['password'];
-            $_SESSION['admin'] = 1;
-            header("Location: ".$_SERVER['PHP_SELF']);
-        }
-        else{
-            header("Location: ".$_SERVER['PHP_SELF']."?action=login");
-        }
-
+if (signedIn()) {
+    echo '<div class="centered"><h5>You are already logged in</h5></div>';
+} elseif (isset($_POST['submit'])) {
+    $username = (string) ($_POST['username'] ?? '');
+    $statement = mysqli_prepare($conx, 'SELECT username, password FROM users WHERE username = ? LIMIT 1');
+    mysqli_stmt_bind_param($statement, 's', $username);
+    mysqli_stmt_execute($statement);
+    $credentials = mysqli_fetch_assoc(mysqli_stmt_get_result($statement));
+    mysqli_stmt_close($statement);
+    if ($credentials && password_verify((string) ($_POST['password'] ?? ''), $credentials['password'])) {
+        session_regenerate_id(true);
+        $_SESSION['username'] = $credentials['username'];
+        $_SESSION['admin'] = 1;
+        unset($_SESSION['password']);
+        redirectPage('index.php');
     }
-    else{
-
-  ?>
-
-  <div align=center>
-    <fieldset style=width:300;>
-    <legend><b>Login</b></legend>
+    redirectPage('index.php?action=login');
+} else {
+?>
+<div class="centered">
+    <fieldset class="compact-form">
+        <legend>Login</legend>
         <form action="index.php?action=login" method="post">
-            <br>
-            Username/Email: <input type=text name=username><br>
-            Password: <input type=password name=password><br>
-            <br><input type=submit name="submit" value=Login><br>
+            <p><label for="login-username">Username/Email:</label>
+            <input type="text" name="username" id="login-username" autocomplete="username" required></p>
+            <p><label for="login-password">Password:</label>
+            <input type="password" name="password" id="login-password" autocomplete="current-password" required></p>
+            <input type="submit" name="submit" value="Login">
         </form>
     </fieldset>
-  </div>
-
-  <?php
-
-    }
+</div>
+<?php
 }
-
 ?>

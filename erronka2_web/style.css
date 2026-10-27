@@ -152,3 +152,18 @@ background-color: lightblue;
     background-color: white;
     max-width: 95%;
 }
+
+.centered { text-align: center; }
+.compact-form { width: min(500px, 90%); margin: 16px auto; }
+.compact-form label, .registration-form label { display: block; }
+.registration-form { max-width: 600px; margin: 16px auto; }
+.product-card { display: flex; gap: 20px; width: min(1000px, 95%); margin: 20px auto; align-items: flex-start; }
+.product-image { flex: 2; padding: 20px; }
+.product-details { flex: 3; }
+.product-details fieldset { margin-bottom: 10px; }
+.product-card img, .account-layout img { max-width: 100%; }
+.empty-catalog { width: min(500px, 90%); margin: 16px auto; }
+.account-layout { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.user-table { border-collapse: collapse; margin: 16px auto; }
+.user-table th, .user-table td { padding: 8px; border: 1px solid maroon; }
+@media (max-width: 650px) { .product-card { display: block; } }

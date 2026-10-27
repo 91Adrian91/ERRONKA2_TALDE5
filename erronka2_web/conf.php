@@ -21,5 +21,3 @@ $version = "1.0";
 //$guard_lfi = true; //Block local file inclusions
 //$guard_rfi = true; //Block remote file inclusions
 //$guard_fuv = true; //Block file upload vulnerabilities
-
-?>

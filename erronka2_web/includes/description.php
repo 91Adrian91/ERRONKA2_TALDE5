@@ -1,68 +1,47 @@
 <?php
+require_once __DIR__ . '/helpers.php';
+requireAccount(true);
 
-/*if(isset($_GET['del_id'])){
-
-  if(isset($_SESSION['admin']) && ($_SESSION['admin']==1)){
-      mysqli_query($conx,"UPDATE produktuak SET descripzioa = '' WHERE ID LIKE ".$_GET['del_id']);
-    header("Location: ".$_SERVER['PHP_SELF']);
-  }else{
-    header("Location: ".$_SERVER['PHP_SELF']);
-  }
-
-}*/
-
-if(isset($_GET['postdescription'])){
-    $crntquery = mysqli_query($conx,"SELECT deskripzioa, salneurria FROM produktuak WHERE ID LIKE ".$_GET['pic_id']);
-    $crntcomm = mysqli_fetch_array($crntquery);
-
-   $deskripzioa = $_POST['deskripzioa'];
-
-    if ($_POST['salneurria'] != '') {
-        $salneurria = $_POST['salneurria'];
-    }else{
-        $salneurria = $crntcomm['salneurria'];
-    }
-
-    mysqli_query($conx,"UPDATE produktuak SET deskripzioa = '".$deskripzioa."', salneurria = ".$salneurria." WHERE ID LIKE ".$_GET['pic_id']);
-
-    header("Location: ".$_SERVER['PHP_SELF']);
-  
-}else{
-
-?>
-
-<div align=center>
-    <fieldset style=width:300;>
-    <legend><b>Descripción</b></legend>
-    <br>
-    <?php
-
-        $picquery = mysqli_query($conx,"SELECT * FROM produktuak WHERE ID = ".$_GET['pic_id']);
-        $data = mysqli_fetch_array($picquery);
-
-        echo "<h4>".$data['izena']." - ".$data['salneurria']."€</h4>";
-        echo "<img src=images/".$data['pic']." border=1><br>";
-
-    ?>
-    <br>
-    <form action="<?php echo $_SERVER['PHP_SELF']."?action=description&pic_id=".$_GET['pic_id']."&postdescription=1";?>" method=POST>
-        <h5>Deskripzioa:</h5>
-        <textarea name=deskripzioa cols=50 rows=10>
-            <?php
-            echo $data['deskripzioa'];
-            ?>
-        </textarea><br>
-        <br>
-        Salneurri berria: <input type="text" name="salneurria">
-        <br>
-        <br>
-        <input type=submit value="Aldatu">
-    </form>
-    </fieldset>
-</div>
-
-<?php
-
+$id = filter_var($_GET['pic_id'] ?? null, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+if ($id === false) {
+    http_response_code(400);
+    echo 'Produktuaren identifikatzailea ez da zuzena.';
+    return;
 }
-
+$statement = mysqli_prepare($conx, 'SELECT * FROM produktuak WHERE id = ?');
+mysqli_stmt_bind_param($statement, 'i', $id);
+mysqli_stmt_execute($statement);
+$product = mysqli_fetch_assoc(mysqli_stmt_get_result($statement));
+mysqli_stmt_close($statement);
+if (!$product) {
+    http_response_code(404);
+    echo 'Produktua ez da aurkitu.';
+    return;
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $description = (string) ($_POST['deskripzioa'] ?? '');
+    $price = ($_POST['salneurria'] ?? '') === '' ? (float) $product['salneurria'] : filter_var($_POST['salneurria'], FILTER_VALIDATE_FLOAT);
+    if ($price === false || $price < 0) {
+        http_response_code(400);
+        echo 'Salneurria ez da zuzena.';
+        return;
+    }
+    $statement = mysqli_prepare($conx, 'UPDATE produktuak SET deskripzioa = ?, salneurria = ? WHERE id = ?');
+    mysqli_stmt_bind_param($statement, 'sdi', $description, $price, $id);
+    mysqli_stmt_execute($statement);
+    mysqli_stmt_close($statement);
+    redirectPage('index.php');
+}
 ?>
+<fieldset class="compact-form">
+    <legend>Deskripzioa</legend>
+    <h4><?php echo htmlText($product['izena']); ?> - <?php echo htmlText($product['salneurria']); ?>€</h4>
+    <img src="images/<?php echo htmlText(rawurlencode(basename($product['pic']))); ?>" alt="<?php echo htmlText($product['izena']); ?>">
+    <form action="index.php?action=description&amp;pic_id=<?php echo $id; ?>" method="post">
+        <p><label for="description-text">Deskripzioa:</label>
+        <textarea name="deskripzioa" id="description-text" cols="50" rows="10"><?php echo htmlText($product['deskripzioa']); ?></textarea></p>
+        <p><label for="description-price">Salneurri berria:</label>
+        <input type="number" name="salneurria" id="description-price" min="0" step="0.01"></p>
+        <input type="submit" value="Aldatu">
+    </form>
+</fieldset>

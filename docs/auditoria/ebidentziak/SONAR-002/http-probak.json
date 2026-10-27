@@ -1,0 +1,363 @@
+{
+  "checks": [
+    {
+      "test": "HTTP index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "Existing admin password preserved",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php",
+      "passed": true
+    },
+    {
+      "test": "Catalog visible",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=search&keyword=%27+OR+1%3D1+--+",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=search&keyword=%27+OR+1%3D1+--+",
+      "passed": true
+    },
+    {
+      "test": "Search SQL injection does not return catalog",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=search&keyword=%3Cscript%3Edocument.title%3D%22XSS%22%3C%2Fscript%3E",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=search&keyword=%3Cscript%3Edocument.title%3D%22XSS%22%3C%2Fscript%3E",
+      "passed": true
+    },
+    {
+      "test": "Search output escaped",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "Login SQL injection rejected",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "Wrong password rejected",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=updel",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=updel",
+      "passed": true
+    },
+    {
+      "test": "Guest cannot administer products",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=description&pic_id=1",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=description&pic_id=1",
+      "passed": true
+    },
+    {
+      "test": "Guest cannot edit products",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=register",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=register",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=register",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=register",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "Registration and login",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=updel",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=updel",
+      "passed": true
+    },
+    {
+      "test": "Regular user cannot administer products",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=account&changepass=1",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=account&changepass=1",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "Changed password works",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "Changing one account preserves admin",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=account&adduser=1",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=account&adduser=1",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "Admin can create user",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=description&pic_id=invalid",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=description&pic_id=invalid",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=description&pic_id=999999999",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=description&pic_id=999999999",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=updel&upload=1",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=updel&upload=1",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php",
+      "passed": true
+    },
+    {
+      "test": "Product upload and catalog",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=description&pic_id=5",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=description&pic_id=5",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php",
+      "passed": true
+    },
+    {
+      "test": "Stored product description escaped",
+      "passed": true
+    },
+    {
+      "test": "Product price updated",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "Control labels: index.php?action=login",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=register",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=register",
+      "passed": true
+    },
+    {
+      "test": "Control labels: index.php?action=register",
+      "passed": true
+    },
+    {
+      "test": "HTTP about.html",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: about.html",
+      "passed": true
+    },
+    {
+      "test": "Control labels: about.html",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=account",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=account",
+      "passed": true
+    },
+    {
+      "test": "Control labels: index.php?action=account",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=updel",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=updel",
+      "passed": true
+    },
+    {
+      "test": "Control labels: index.php?action=updel",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=description&pic_id=5",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=description&pic_id=5",
+      "passed": true
+    },
+    {
+      "test": "Control labels: index.php?action=description&pic_id=5",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=logout",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=logout",
+      "passed": true
+    },
+    {
+      "test": "Logout clears authentication",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=updel&pic_id=5",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=updel&pic_id=5",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=account&deleteuser=s1a71e390e8%40example.test",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=account&deleteuser=s1a71e390e8%40example.test",
+      "passed": true
+    },
+    {
+      "test": "HTTP index.php?action=account&deleteuser=a1a71e390e8%40example.test",
+      "passed": true
+    },
+    {
+      "test": "No PHP error: index.php?action=account&deleteuser=a1a71e390e8%40example.test",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "count": 89,
+  "temporary_data_cleaned": true
+}

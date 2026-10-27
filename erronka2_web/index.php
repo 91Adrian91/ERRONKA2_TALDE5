@@ -1,113 +1,99 @@
 <?php
 
+ob_start();
 session_start();
 
-include("conf.php");
-include("includes/mysql.php");
+require_once __DIR__ . '/conf.php';
+require_once __DIR__ . '/includes/mysql.php';
+
+function redirectToHome(): void
+{
+    header('Location: index.php');
+    exit;
+}
+
+$action = $_GET['action'] ?? '';
+if (!is_string($action)) {
+    $action = '';
+}
+
+$signedIn = isset($_SESSION['admin']) && $_SESSION['admin'] == 1;
+$administrator = $signedIn && ($_SESSION['username'] ?? '') === 'admin@bdweb';
+
+if (($action === 'updel' && !$administrator) || ($action === 'account' && !$signedIn)) {
+    redirectToHome();
+}
+if ($action === 'logout') {
+    session_destroy();
+    redirectToHome();
+}
 
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="eu">
 <head>
-<title><?php echo $enpresa; ?></title>
-</html>
-<link rel=stylesheet type=text/css href=style.css>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?php echo htmlspecialchars($enpresa, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div align=center>
-<!--<fieldset class=body_container id=body_container>-->
-<table cellspacing=5 cellpadding=5>
-<tr>
-<td>
-<img src=logo.png height=110 width=115 border=0>
-</td>
-<td>
-<hr>
-<h1><?php echo $enpresa; ?></h1><br>
-<hr>
-</td>
-</tr>
-</table>
-<hr width=1000 size=5>
-
-<?php
-if(isset($_SESSION['admin']) && ($_SESSION['admin']==1)){
-  echo "<h3>Ongi Etorri ";
-
-  echo $_SESSION['username'];
-  if ($_SESSION['username']== "admin@bdweb"){
-      echo " | <a href=".$_SERVER['PHP_SELF']."?action=account>Kontua</a> | <a href=".$_SERVER['PHP_SELF']."?action=updel>Igo/Ezabatu</a> | <a href=".$_SERVER['PHP_SELF']."?action=logout>Saioa itxi</a> | <a href=".$_SERVER['PHP_SELF'].">Hasiera</a></h3>";
-  }
-  else {
-    echo " | <a href=".$_SERVER['PHP_SELF']."?action=account>Kontua</a> | <a href=".$_SERVER['PHP_SELF']."?action=logout>Saioa itxi</a> | <a href=".$_SERVER['PHP_SELF'].">Hasiera</a></h3>";
-    /* karritoan zerbait badago, hemen ipini - karritoa ikusi*/
-  }
-}
-else{
-  echo "<h3><a href=".$_SERVER['PHP_SELF']."?action=register>Erregistratu</a> | <a href=".$_SERVER['PHP_SELF']."?action=login>Saioa hasi</a> | <a href=".$_SERVER['PHP_SELF'].">Hasiera</a></h3>";
-}
-
-?>
-<form name="search" method="get" action=<?php echo $_SERVER['PHP_SELF']."?action=search" ?> id="search">
-    <input type="text" value="" name="keyword"/>
-    <input type="submit" name="search" value="Bilatu"/>
+<header class="site-header">
+    <img src="logo.png" class="site-logo" width="115" height="110" alt="Enpresaren logotipoa">
+    <div>
+        <hr>
+        <h1><?php echo htmlspecialchars($enpresa, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></h1>
+        <hr>
+    </div>
+</header>
+<hr class="section-divider">
+<nav class="site-navigation" aria-label="Nabigazio nagusia">
+<?php if ($signedIn): ?>
+    <h3>Ongi Etorri <?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></h3>
+    <a href="index.php?action=account">Kontua</a> |
+    <?php if ($administrator): ?>
+        <a href="index.php?action=updel">Igo/Ezabatu</a> |
+    <?php endif; ?>
+    <a href="index.php?action=logout">Saioa itxi</a> |
+<?php else: ?>
+    <a href="index.php?action=register">Erregistratu</a> |
+    <a href="index.php?action=login">Saioa hasi</a> |
+<?php endif; ?>
+    <a href="index.php">Hasiera</a>
+</nav>
+<form method="get" action="index.php" id="search" class="search-form">
+    <input type="hidden" name="action" value="search">
+    <label for="keyword">Bilatu produktuak:</label>
+    <input type="text" id="keyword" name="keyword" value="">
+    <input type="submit" name="search" value="Bilatu">
 </form>
-
-<hr width=1000 size=5>
-<br>
-
+<hr class="section-divider">
+<main class="page-content">
 <?php
-if(isset($_GET['action'])){
-    switch($_GET['action']){
-      case("updel"):
-        if(isset($_SESSION['admin']) && ($_SESSION['admin']==1) && ($_SESSION['username']=='admin@bdweb')){
-          include("includes/updel.php");
-        }else{
-          header("Location: ".$_SERVER['PHP_SELF']);
-        }
-      break;
-      case("register"):
-         include("includes/register.php");
-      break;
-      case("login"):
-        include("includes/login.php");
-      break;
-      case("description"):
-        include("includes/description.php");
-      break;
-      case("search"):
-            include("includes/main.php");
-            break;
-      case("account"):
-        if(isset($_SESSION['admin']) && ($_SESSION['admin']==1)){
-          include("includes/account.php");
-        }else{
-          header("Location: ".$_SERVER['PHP_SELF']);
-        }
-      break;
-      case("logout"):
-        if(isset($_SESSION['admin']) && ($_SESSION['admin']==1)){
-          session_destroy();
-          header("Location: ".$_SERVER['PHP_SELF']);
-        }else{
-          header("Location: ".$_SERVER['PHP_SELF']);
-        }
-      break;
-      default:
-          include("includes/".$_GET['action'].".php");
-    }
+switch ($action) {
+    case 'updel':
+        include_once __DIR__ . '/includes/updel.php';
+        break;
+    case 'register':
+        include_once __DIR__ . '/includes/register.php';
+        break;
+    case 'login':
+        include_once __DIR__ . '/includes/login.php';
+        break;
+    case 'description':
+        include_once __DIR__ . '/includes/description.php';
+        break;
+    case 'account':
+        include_once __DIR__ . '/includes/account.php';
+        break;
+    default:
+        include_once __DIR__ . '/includes/main.php';
 }
-else{
-    include("includes/main.php");
-}
-
 ?>
-</div>
-<br>
-<hr width=1000 size=5>
-<div align=center>
-    <b>Proiektua <?php echo $version; ?><b> <br>
-<!--</fieldset>-->
-</div>
+</main>
+<hr class="section-divider">
+<footer class="site-footer">
+    <b>Proiektua <?php echo htmlspecialchars($version, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></b>
+</footer>
 </body>
 </html>

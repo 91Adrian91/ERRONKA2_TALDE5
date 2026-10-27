@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proiektua</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+    <img src="logo.png" class="site-logo" width="115" height="110" alt="Enpresaren logotipoa">
+    <div>
+        <hr>
+        <h1>Proiektua</h1>
+        <hr>
+    </div>
+</header>
+<hr class="section-divider">
+<nav class="site-navigation" aria-label="Nabigazio nagusia">
+    <a href="index.php?action=register">Erregistratu</a> |
+    <a href="index.php?action=login">Saioa hasi</a> |
+    <a href="index.php">Hasiera</a>
+</nav>
+<form method="get" action="index.php" id="search" class="search-form">
+    <input type="hidden" name="action" value="search">
+    <label for="keyword">Bilatu produktuak:</label>
+    <input type="text" id="keyword" name="keyword" value="">
+    <input type="submit" name="search" value="Bilatu">
+</form>
+<hr class="section-divider">
+<main class="page-content">
+    <table width=1000 cellpadding=10 cellspacing=10 align=center>
+    
+        <tr>
+            <td align=center valign=top width=40%>
+                <fieldset>
+                <br>
+                <a href=images/generikoa.jpg><img src=images/generikoa.jpg border=1></a><br>
+                <br>
+                </fieldset>
+            </td>
+            <td valign=top width=60%>
+                <fieldset>
+                    <legend><b>Izena</b></legend>
+                    <br>
+                    produktu 1 - 12€                    <br>
+                </fieldset>
+                <fieldset>
+                    <legend><b>Deskripzioa</b></legend>
+                    <br>
+                                produktu 1ren deskripzioa                            <br>
+                </fieldset>
+                <br>
+                            </td>
+        </tr>
+    
+        <tr>
+            <td align=center valign=top width=40%>
+                <fieldset>
+                <br>
+                <a href=images/generikoa.jpg><img src=images/generikoa.jpg border=1></a><br>
+                <br>
+                </fieldset>
+            </td>
+            <td valign=top width=60%>
+                <fieldset>
+                    <legend><b>Izena</b></legend>
+                    <br>
+                    produktu 2 - 10€                    <br>
+                </fieldset>
+                <fieldset>
+                    <legend><b>Deskripzioa</b></legend>
+                    <br>
+                    produktu 2ren deskripzioa                    <br>
+                </fieldset>
+                <br>
+                            </td>
+        </tr>
+    
+        <tr>
+            <td align=center valign=top width=40%>
+                <fieldset>
+                <br>
+                <a href=images/producto3.jpg><img src=images/producto3.jpg border=1></a><br>
+                <br>
+                </fieldset>
+            </td>
+            <td valign=top width=60%>
+                <fieldset>
+                    <legend><b>Izena</b></legend>
+                    <br>
+                    produktu 3 - 8€                    <br>
+                </fieldset>
+                <fieldset>
+                    <legend><b>Deskripzioa</b></legend>
+                    <br>
+                    hirugarrena da, etiketa barik                    <br>
+                </fieldset>
+                <br>
+                            </td>
+        </tr>
+    
+</table></main>
+<hr class="section-divider">
+<footer class="site-footer">
+    <b>Proiektua 1.0</b>
+</footer>
+</body>
+</html>

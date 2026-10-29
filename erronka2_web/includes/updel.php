@@ -29,16 +29,18 @@ if (isset($_GET['pic_id']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     redirectPage('index.php?action=updel');
 }
 if (isset($_GET['upload']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = (string) ($_POST['izena'] ?? '');
-    $description = (string) ($_POST['deskripzioa'] ?? '');
-    $price = filter_var($_POST['salneurria'] ?? null, FILTER_VALIDATE_FLOAT);
-    $stock = filter_var($_POST['stock'] ?? null, FILTER_VALIDATE_INT);
-    if ($name === '' || $price === false || $price < 0 || $stock === false || $stock < 0) {
+    $name = inputText($_POST, 'izena');
+    $description = inputText($_POST, 'deskripzioa');
+    $price = filter_var(inputText($_POST, 'salneurria'), FILTER_VALIDATE_FLOAT);
+    $stock = filter_var(inputText($_POST, 'stock'), FILTER_VALIDATE_INT);
+    if (trim($name) === '' || mb_strlen($name) > 30 || mb_strlen($description) > 150
+        || $price === false || !is_finite($price) || $price < 0 || $price > 1000000
+        || $stock === false || $stock < 0 || $stock > 99999) {
         http_response_code(400);
         echo 'Produktuaren datuak ez dira zuzenak.';
         return;
     }
-    $image = imageUpload('upfile', PRODUCT_IMAGE_DIRECTORY);
+    $image = imageUpload('upfile', PRODUCT_IMAGE_DIRECTORY) ?: 'hortz-protesia.jpg';
     $statement = mysqli_prepare($conx, 'INSERT INTO produktuak (izena, deskripzioa, salneurria, pic, stock) VALUES (?, ?, ?, ?, ?)');
     mysqli_stmt_bind_param($statement, 'ssdsi', $name, $description, $price, $image, $stock);
     mysqli_stmt_execute($statement);
@@ -50,6 +52,7 @@ if (isset($_GET['upload']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     <fieldset class="compact-form">
         <legend>Produktu berria</legend>
         <form enctype="multipart/form-data" action="index.php?action=updel&amp;upload=1" method="post">
+            <?php echo csrfField(); ?>
             <p><label for="product-name">Izena:</label><input type="text" name="izena" id="product-name" required></p>
             <p><label for="product-description">Deskripzioa:</label><input type="text" name="deskripzioa" id="product-description"></p>
             <p><label for="product-price">Salneurria:</label><input type="number" name="salneurria" id="product-price" min="0" step="0.01" required></p>
@@ -67,6 +70,7 @@ if (isset($_GET['upload']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3><?php echo htmlText($product['izena']); ?></h3>
                 <img src="images/<?php echo htmlText(rawurlencode(basename($product['pic']))); ?>" alt="<?php echo htmlText($product['izena']); ?>">
                 <form action="index.php?action=updel&amp;pic_id=<?php echo (int) $product['id']; ?>" method="post">
+            <?php echo csrfField(); ?>
                     <button type="submit">Ezabatu <?php echo htmlText($product['izena']); ?></button>
                 </form>
             </article>

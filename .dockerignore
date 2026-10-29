@@ -1,0 +1,12 @@
+.git
+.github
+.composer
+.phpstan-cache
+.phpunit.cache
+build
+vendor
+.env
+.env.*
+docs
+*.docx
+*.xlsx

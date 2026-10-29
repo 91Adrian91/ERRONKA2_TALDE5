@@ -2,8 +2,9 @@
 
 // Laborategiko bi kontuen migrazioa bakarrik; lehenetsita ez du ezer aldatzen.
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-require_once __DIR__ . '/../erronka2_web/conf.php';
-$connection = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+$webRoot = getenv('APP_WEB_ROOT') ?: __DIR__ . '/../erronka2_web';
+require_once $webRoot . '/conf.php';
+$connection = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db, $mysql_port);
 $legacyHash = '5f4dcc3b5aa765d61d8327deb882cf99';
 $users = mysqli_fetch_all(mysqli_query($connection, 'SELECT id, password FROM users'), MYSQLI_ASSOC);
 $pending = array_filter($users, static fn ($user) => $user['password'] === $legacyHash);

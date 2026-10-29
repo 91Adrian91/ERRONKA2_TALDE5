@@ -47,3 +47,29 @@ jobs:
           name: php-tests-${{ matrix.php }}
           path: build/junit.xml
           if-no-files-found: warn
+
+  security-http:
+    name: HTTP security and Docker
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Web eta MySQL isolatuak abiatu
+        run: docker compose --env-file .env.test.example -p arrue-security-ci up -d --build --wait --wait-timeout 180 web
+      - name: Benetako HTTP segurtasun-probak
+        run: docker compose --env-file .env.test.example -p arrue-security-ci --profile test run --build --rm tests
+      - name: HTTP ebidentziak gorde
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-http
+          path: build/security-http.json
+          if-no-files-found: warn
+      - name: Diagnostikoa
+        if: failure()
+        run: docker compose --env-file .env.test.example -p arrue-security-ci logs --tail 80
+      - name: Proba-ingurunea gelditu
+        if: ${{ always() }}
+        run: docker compose --env-file .env.test.example -p arrue-security-ci down

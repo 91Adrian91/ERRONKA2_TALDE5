@@ -18,30 +18,38 @@ Kontrol batek huts egiten badu, job osoak huts egiten du. Ez dago
 `continue-on-error` aukerarik. Proben XML txostena artefaktu gisa gordetzen da,
 probak huts egiten badute ere. `contents: read` baimena erabiltzen da.
 
-## Hasierako kodearen egoera
+## Uneko egoera — 2026-10-29
 
-Webgunearen PHP kodea jatorrizko moduan mantendu da. PHPStan 0 mailarekin
-hasten da, eta hasierako akats bakarra `phpstan-baseline.neon` fitxategian
-jasota dago: `includes/register.php` fitxategiko `mysqli_error()` deiak ez du
-beharrezko konexio-argumentua jasotzen. Baselineak akats hori ezaguntzat
-hartzen du; akats berriek pipelinea geldiarazten dute. Akatsa konpontzean,
-kendu haren baseline sarrera ere, bestela CI-k sarrera zaharkitua salatuko du.
-Ez birsortu baselinea akats berriak isilarazteko. Helburua baselinea hustea
-eta pixkanaka analisi-maila igotzea da.
+`composer check` gaindituta dago: PHP sintaxia, PHPStan 0 maila eta
+**11 proba / 30 baieztapen**. Baselineko `ignoreErrors` zerrenda hutsik dago.
+`SecurityHelpersTest.php`-k tokenen saio-lotura, sarrera mota okerrak,
+iraungitze absolutua/idle, pasahitzen byte-muga eta HTML kodetzea probatzen ditu.
+`AuthenticationViewsTest.php`-ko aurreko bost probak mantendu dira.
 
-Lau unitate-probek honakoak egiaztatzen dituzte:
+CI-k bi lan egiten ditu:
 
-1. Gonbidatuak saio-hasierako formularioa ikusten du, POST metodoarekin eta pasahitz-eremuarekin.
-2. Autentifikatutako erabiltzaileak ez du saio-hasierako formularioa berriz ikusten.
-3. `admin=0` duen saioak saio-hasierako formularioa ikusten du.
-4. Erabiltzaile arruntaren kontuak pasahitza aldatzeko formularioa erakusten du, erabiltzaileak kudeatzeko kontrolik gabe.
+1. PHP 8.3 eta 8.5: Composer baliozkotu, sintaxia, PHPStan eta PHPUnit;
+   `php-tests-*` artefaktuetan JUnit txostenak gorde.
+2. `HTTP security and Docker`: web/Apache eta MySQL edukiontzi isolatuetan
+   eraiki, **76 HTTP/MySQL egiaztapen** exekutatu eta `security-http` JSON
+   artefaktua gorde. Amaieran proba-ingurunea gelditu.
 
-Probek PHP ikuspegiak isolatuta exekutatzen dituzte, datu-baserik gabe.
-Ez dute frogatzen SQLi, XSS, autentifikazioa edo baimenak seguruak direnik.
-Ahulezien zuzenketekin batera erregresio- eta integrazio-probak gehitu behar dira.
-PHPStan 0 maila ere ez da segurtasun-auditoria baten ordezkoa.
+Probek BD isolatua eskatzen dute (`arrue_test`); ez dira erabiltzailearen
+`arrue-mysql` edukiontzian edo datu errealetan exekutatzen. Saio-probetako
+zerbitzari gehigarriak iraungitze laburra eta Secure cookie flag-a ditu;
+barne-sarean bakarrik dago eta ez du host-porturik.
+
+Aurreko diseinu-commit-aren (`6622351`) CI urrunekoa egiaztatu da:
+[40843454090 — success](https://github.com/91Adrian91/ERRONKA2_TALDE5/actions/runs/40843454090).
+Horrek ez du ondorengo segurtasun-aldaketen CI frogatzen; horien exekuzioa
+commit berriarekin lotu behar da. Ez dago ekoizpenerako deploy automatikoa.
+
+Egungo inbentarioa, mugak eta ebidentziak: [WEB-SEGURTASUNA](WEB-SEGURTASUNA.md).
 
 ## Erabilera lokala
+
+Web osoa eta MySQL Compose bidez abiatu daitezke. Arrankea, instalazio
+zaharren migrazioa eta proba isolatuen komandoak: [README](../README.md).
 
 ```sh
 composer install
@@ -70,6 +78,9 @@ composer check
   `CONTRIBUTING.md` eta `docs/`.
 
 ## Tokiko egiaztapena — 2026-10-26
+
+Atal hau lehen exekuzioaren erregistro historikoa da; ondorengo kodea eta
+proba kopurua goiko uneko egoeran daude.
 
 PHP 8.5.1, PHPStan 2.3.2 eta PHPUnit 11.5.57 erabiliz:
 

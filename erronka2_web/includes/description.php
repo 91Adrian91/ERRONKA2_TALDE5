@@ -19,9 +19,10 @@ if (!$product) {
     return;
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $description = (string) ($_POST['deskripzioa'] ?? '');
-    $price = ($_POST['salneurria'] ?? '') === '' ? (float) $product['salneurria'] : filter_var($_POST['salneurria'], FILTER_VALIDATE_FLOAT);
-    if ($price === false || $price < 0) {
+    $description = inputText($_POST, 'deskripzioa');
+    $priceText = inputText($_POST, 'salneurria');
+    $price = $priceText === '' ? (float) $product['salneurria'] : filter_var($priceText, FILTER_VALIDATE_FLOAT);
+    if (mb_strlen($description) > 150 || $price === false || !is_finite($price) || $price < 0 || $price > 1000000) {
         http_response_code(400);
         echo 'Salneurria ez da zuzena.';
         return;
@@ -38,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h4><?php echo htmlText($product['izena']); ?> - <?php echo htmlText($product['salneurria']); ?>€</h4>
     <img src="images/<?php echo htmlText(rawurlencode(basename($product['pic']))); ?>" alt="<?php echo htmlText($product['izena']); ?>">
     <form action="index.php?action=description&amp;pic_id=<?php echo $id; ?>" method="post">
+            <?php echo csrfField(); ?>
         <p><label for="description-text">Deskripzioa:</label>
         <textarea name="deskripzioa" id="description-text" cols="50" rows="10"><?php echo htmlText($product['deskripzioa']); ?></textarea></p>
         <p><label for="description-price">Salneurri berria:</label>

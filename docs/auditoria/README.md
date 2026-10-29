@@ -4,20 +4,27 @@ Helburua: ahuleziak banan-banan identifikatzea, frogatzea, zuzentzea eta
 berriz probatzea. Dokumentazio honetan egindako probak eta oraindik egiteko
 daudenak bereizten dira.
 
-| IDa | Gaia | Egiaztapena | Egoera |
-|---|---|---|---|
-| [AUD-001](AUD-001.md) | Saio-hasierako `action` atributuan HTML/JavaScript injekzioa | Ikuspegi isolatua, Chrome eta PHPUnit | Puntu hori zuzenduta; HTTP integrazio-proba egiteke |
+## Uneko egoera — 2026-10-29
 
-Oraingoz lehen puntu hau bakarrik landu da. Horrek ez du esan nahi webguneko
-XSS guztiak edo beste ahuleziak konponduta daudenik.
+Egungo kontrolen, aurkikuntzen eta erreprodukzioaren dokumentu nagusia:
+[WEB-SEC-001 / WEB-SEGURTASUNA](../WEB-SEGURTASUNA.md).
 
-## Lehen urratsaren fitxategiak
+- PHP sintaxia eta PHPStan gaindituta; **11 unitate-proba / 30 baieztapen**.
+- **76 HTTP/MySQL egiaztapen gaindituta** ingurune isolatuan: XSS, SQLi,
+  pasahitzak, CSRF, baimenak, irudi-igoerak eta saioen bizi-zikloa.
+- Weba eta MySQL edukiontzietan martxan. CI-k probak automatikoki errepikatzen ditu.
+- [HTTP JSONa](ebidentziak/WEB-SEC-001/http-security.json) eta
+  [baliozkotzea + iturrien hashak](ebidentziak/WEB-SEC-001/validation.json).
 
-- [Azalpena, aurreko kodea, zuzenketa eta probak](AUD-001.md).
-- [Zuzenketaren aurreko benetako captura](ebidentziak/AUD-001/aurretik.png).
-- [Zuzenketaren ondorengo benetako captura](ebidentziak/AUD-001/ondoren.png).
-- [Aldaketen checklist-a](CHECKLIST.md).
+## Aurreko ebidentziak
 
-Hurrengo urrats txikia: webgunea eta datu-basea lokalean martxan jarri eta
-AUD-001 kasua HTTP bidez egiaztatu. Ondoren, bilaketaren irteera aztertu,
-beste aldaketa batekin nahastu gabe.
+| IDa | Gaia | Esparrua / egoera |
+|---|---|---|
+| [AUD-001](AUD-001.md) | Login action / PHP_SELF | Aurreko proba isolatua mantenduta. Egungo Apache-n PATH_INFO erasoko eskaera HTTP 404 bidez baztertzen da. |
+| SONAR-001 | HTML/CSS eta sarbideak | [29 egiaztapen historiko](ebidentziak/SONAR-001/egiaztapenak.json); ez da SonarQube berranalisia |
+| SONAR-002 | PHP/HTML/CSS eta SQL/pasahitz zuzenketak | [2026-10-27 laburpena](ebidentziak/SONAR-002/laburpena.json): 147 → 0, 89 HTTP egiaztapen |
+| SONAR-004 | index.php berreskuratzea | [2026-10-28 laburpena](ebidentziak/SONAR-004/laburpena.json): 45 → 0; karpeta oraindik Git-en jarraipenik gabe |
+
+Ez da SonarQube analisi berririk egin egungo aldaketetarako. Proba hauek
+estaldura zehatza dute; ez dira segurtasun-ziurtagiri edo pentest independente osoa.
+Ez aldatu aurreko ebidentziak egungo emaitzak balira bezala.

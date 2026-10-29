@@ -1,23 +1,9 @@
 <?php
-
-//MySQL
-$mysql_host = "localhost";
-$mysql_user = "root";
-$mysql_pass = "";
-$mysql_db = "BDweb";
-
-//Gallery
-$enpresa = "Arrue Hortz Sintetikoak";
-$version = "1.0";
-
-//Vulnerabilities (true or false)
-//NOTE: disabling some vulnerabilities may render others useless
-//$guard_pers_xss = true; //Block persistent cross site scripting
-//$guard_refl_xss = true; //Block reflected cross site scripting
-//$guard_csrf = true; //Block cross site request forgery //Blocker not yet implemented
-//$guard_sesfix = true; //Block session fixation //Blocker not yet implemented
-//$guard_sqli = true; //Block SQL injection
-//$guard_auth_sqli = true; //Block authentication bypass SQL injection
-//$guard_lfi = true; //Block local file inclusions
-//$guard_rfi = true; //Block remote file inclusions
-//$guard_fuv = true; //Block file upload vulnerabilities
+// Tokiko laborategiko balioak; Docker/CI-k ingurune-aldagaiak erabiltzen ditu.
+$mysql_host = getenv('DB_HOST') ?: 'localhost';
+$mysql_port = (int) (getenv('DB_PORT') ?: 3306);
+$mysql_user = getenv('DB_USER') ?: 'root';
+$mysql_pass = getenv('DB_PASSWORD') === false ? '' : getenv('DB_PASSWORD');
+$mysql_db = getenv('DB_NAME') ?: 'BDweb';
+$enpresa = 'Arrue Hortz Sintetikoak';
+$version = '1.1';

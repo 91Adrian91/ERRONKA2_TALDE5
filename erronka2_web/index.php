@@ -1,7 +1,8 @@
 <?php
 
+define('ARRUE_ENTRY', true);
 ob_start();
-session_start();
+require_once __DIR__ . '/includes/security.php';
 
 require_once __DIR__ . '/conf.php';
 require_once __DIR__ . '/includes/mysql.php';
@@ -17,14 +18,31 @@ if (!is_string($action)) {
     $action = '';
 }
 
-$signedIn = isset($_SESSION['admin']) && $_SESSION['admin'] == 1;
+// Kontu ezabatuen edo pasahitz zaharreko saioak ez dira baliozkoak.
+if (signedIn()) {
+    $sessionUser = inputText($_SESSION, 'username');
+    $statement = mysqli_prepare($conx, 'SELECT password FROM users WHERE username = ? LIMIT 1');
+    mysqli_stmt_bind_param($statement, 's', $sessionUser);
+    mysqli_stmt_execute($statement);
+    $currentAccount = mysqli_fetch_assoc(mysqli_stmt_get_result($statement));
+    mysqli_stmt_close($statement);
+    if (!$currentAccount || !hash_equals(inputText($_SESSION, 'credential_version'), hash('sha256', $currentAccount['password']))) {
+        destroyLoginSession();
+        redirectPage('index.php?action=login');
+    }
+}
+$signedIn = signedIn();
 $administrator = $signedIn && ($_SESSION['username'] ?? '') === 'admin@bdweb';
 
-if (($action === 'updel' && !$administrator) || ($action === 'account' && !$signedIn)) {
+if ((in_array($action, ['updel', 'description'], true) && !$administrator) || ($action === 'account' && !$signedIn)) {
     redirectToHome();
 }
 if ($action === 'logout') {
-    session_destroy();
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        header('Allow: POST');
+        throw new RequestException('Saioa ixteko POST eskaera behar da.', 405);
+    }
+    destroyLoginSession();
     redirectToHome();
 }
 
@@ -54,7 +72,9 @@ if ($action === 'logout') {
     <?php if ($administrator): ?>
         <a href="index.php?action=updel">Igo/Ezabatu</a> |
     <?php endif; ?>
-    <a href="index.php?action=logout">Saioa itxi</a> |
+    <form class="logout-form" action="index.php?action=logout" method="post">
+        <?php echo csrfField(); ?><button type="submit">Saioa itxi</button>
+    </form> |
 <?php else: ?>
     <a href="index.php?action=register">Erregistratu</a> |
     <a href="index.php?action=login">Saioa hasi</a> |

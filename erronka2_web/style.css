@@ -117,3 +117,7 @@ legend { padding: 0 8px; color: var(--text); font-weight: bold; }
     .company-facts > div { flex-basis: 40%; }
     .about-section { padding: 18px; }
 }
+
+.logout-form { display: inline; margin: 0; }
+.logout-form button { padding: 5px 8px; min-height: auto; border: 0; background: transparent; color: var(--accent); font-size: 15px; }
+.logout-form button:hover { background: transparent; color: #0b3f3e; text-decoration: underline; }

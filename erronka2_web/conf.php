@@ -7,7 +7,7 @@ $mysql_pass = "";
 $mysql_db = "BDweb";
 
 //Gallery
-$enpresa = "Proiektua";
+$enpresa = "Arrue Hortz Sintetikoak";
 $version = "1.0";
 
 //Vulnerabilities (true or false)

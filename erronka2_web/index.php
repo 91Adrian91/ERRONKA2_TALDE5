@@ -34,16 +34,16 @@ if ($action === 'logout') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Arrue Hortz Sintetikoak: hortz sintetikoen diseinua, fabrikazioa eta banaketa, kliniken 3D diseinuetatik abiatuta.">
     <title><?php echo htmlspecialchars($enpresa, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=arrue-refine-3">
 </head>
 <body>
 <header class="site-header">
-    <img src="logo.png" class="site-logo" width="115" height="110" alt="Enpresaren logotipoa">
+    <a href="index.php" aria-label="Arrue · Hasiera"><img src="images/arrue-hortza.svg" class="site-logo" width="64" height="64" alt="Arrue Hortz Sintetikoak"></a>
     <div>
-        <hr>
         <h1><?php echo htmlspecialchars($enpresa, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></h1>
-        <hr>
+        <p class="brand-tagline">Hortz-teknologia, kliniken zerbitzura.</p>
     </div>
 </header>
 <hr class="section-divider">
@@ -59,7 +59,8 @@ if ($action === 'logout') {
     <a href="index.php?action=register">Erregistratu</a> |
     <a href="index.php?action=login">Saioa hasi</a> |
 <?php endif; ?>
-    <a href="index.php">Hasiera</a>
+    <a href="index.php">Hasiera</a> |
+    <a href="about.html">Arrueri buruz</a>
 </nav>
 <form method="get" action="index.php" id="search" class="search-form">
     <input type="hidden" name="action" value="search">
@@ -93,7 +94,9 @@ switch ($action) {
 </main>
 <hr class="section-divider">
 <footer class="site-footer">
-    <b>Proiektua <?php echo htmlspecialchars($version, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></b>
+    <b>Arrue Hortz Sintetikoak</b>
+    <p>Diseinutik fabrikaziora. Euskal Herritik Europara.</p>
+    <a href="about.html">Enpresa</a> · <a href="about.html#pribatutasuna">Pribatutasuna</a> · <a href="about.html#irudiak">Irudien kredituak</a>
 </footer>
 </body>
 </html>

@@ -41,9 +41,9 @@ CREATE TABLE `produktuak` (
 --
 
 INSERT INTO `produktuak` (`id`, `izena`, `deskripzioa`, `salneurria`, `pic`, `stock`) VALUES
-(1, 'produktu 1', '            produktu 1ren deskripzioa        ', 12, 'generikoa.jpg', 5),
-(2, 'produktu 2', 'produktu 2ren deskripzioa', 10, 'generikoa.jpg', 7),
-(4, 'produktu 3', 'hirugarrena da, etiketa barik', 8, 'producto3.jpg', 3);
+(1, 'Hortz sintetikoa', 'Klinikaren 3D diseinutik abiatuta fabrikatutako hortz-pieza. Doitasunezko akabera duen katalogoko adibidea.', 12, 'hortz-protesia.jpg', 5),
+(2, 'Hortz-eredua', 'Hortz-arkuaren eredua, diseinuaren forma eta piezen kokapena aztertzeko. Katalogoko adibidea.', 10, 'hortz-eredua.jpg', 7),
+(4, 'Hortz-moldeen multzoa', 'Hortz-formak eta diseinuaren xehetasunak alderatzeko molde-multzoa. Katalogoko adibidea.', 8, 'hortz-moldeak.jpg', 3);
 
 -- --------------------------------------------------------
 

@@ -1,18 +1,58 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="eu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Acerca de la empresa</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Ezagutu Arrue Hortz Sintetikoak: 55 laguneko taldea, bi ekoizpen-gune eta kliniketatik abiatzen den hortz-diseinua.">
+    <title>Arrueri buruz · Arrue Hortz Sintetikoak</title>
+    <link rel="stylesheet" href="style.css?v=arrue-refine-3">
 </head>
+
 <body>
-<main class="about-page">
-    <h1>Acerca de la empresa</h1>
-    <h2><label for="company-description">Descripción de la empresa</label></h2>
-    <textarea id="company-description" cols="100" rows="20" lang="eu">Enpresaren deskripzioa jarri</textarea>
-    <h2><label for="privacy-notice">Área legal · Aviso de privacidad</label></h2>
-    <textarea id="privacy-notice" cols="100" rows="20">Lorem ipsum...................</textarea>
-</main>
+    <header class="site-header">
+        <a href="index.php" aria-label="Arrue · Hasiera"><img src="images/arrue-hortza.svg" class="site-logo" width="64" height="64" alt="Arrue Hortz Sintetikoak"></a>
+        <div><h1>Arrue Hortz Sintetikoak</h1><p class="brand-tagline">Hortz-teknologia, kliniken zerbitzura.</p></div>
+    </header>
+    <nav class="site-navigation" aria-label="Nabigazio nagusia"><a href="index.php">Hasiera</a> | <a href="about.html" aria-current="page">Arrueri buruz</a> | <a href="index.php#katalogoa">Katalogoa</a></nav>
+    <main class="about-page">
+        <section class="company-hero" aria-labelledby="about-title">
+            <div class="hero-copy">
+                <p class="eyebrow">GURE ENPRESA</p>
+                <h2 id="about-title">Ezagutza eta teknologia,<br>hortz bakoitzean.</h2>
+                <p>Arrue Hortz Sintetikoak Euskal Herriko enpresa da, hortz sintetikoen diseinuan, ekoizpenean eta Europako banaketan aritzen dena.</p>
+                <p>Klinikek bidaltzen dizkiguten 3D diseinuak abiapuntu hartuta, diseinuaren eta ekoizpenaren arteko lana koordinatzen dugu.</p>
+            </div>
+            <figure class="hero-photo about-photo"><img src="images/hortz-moldeak.jpg" width="1200" height="1800" alt="Hiru hortz-molde, hondo urdin argi baten gainean"><figcaption>Hortz-ereduak · irudi adierazgarria</figcaption></figure>
+        </section>
+        <section class="company-facts" aria-label="Arrue zenbakitan">
+            <div><strong>55</strong><span>langile</span></div><div><strong>2</strong><span>ekoizpen-gune</span></div><div><strong>3D</strong><span>kliniken diseinuak</span></div><div><strong>Europa</strong><span>banaketa-eremua</span></div>
+        </section>
+        <section class="about-section">
+            <p class="eyebrow">ELKARLANEAN</p><h2>Sei sail, prozesu partekatu bat.</h2>
+            <p>Gure taldea gerentziako 5 lagunek, administrazioko 12k, IKTko 8k, ikerketako 10ek, diseinuko 10ek eta ekoizpeneko 10ek osatzen dute. Sailen arteko koordinazioa funtsezkoa da klinikaren diseinua azken piezarekin lotzeko.</p>
+            <h3>Bi gunetan antolatutako ekoizpena</h3>
+            <p>Lehen makinak fabrikazio automatizatua egiten du. Bigarrenak doitasunezko akabera lantzen du, egoitza nagusitik bi kilometrora dagoen gunean; bertan ekoizpeneko bost langile aritzen dira.</p>
+            <h3>Trazabilitatea hobetzeko konpromisoa</h3>
+            <p>Gure hobekuntza-ildoetako bat diseinuen, piezen eta klinika hartzaileen arteko lotura sendotzea da. Helburua da sailen eta ekoizpen-guneen arteko informazioa hobeto koordinatzea eta bidalketa-akatsak murriztea.</p>
+        </section>
+        <section id="pribatutasuna" class="about-section privacy-section">
+            <p class="eyebrow">KONTUA ETA INFORMAZIOA</p><h2>Pribatutasuna</h2>
+            <p>Webgune honen erregistroak kontuaren identifikazio- eta harremanetarako datuak eskatzen ditu, baita profilaren irudia ere. Kontuaren atalean pasahitza eta profileko irudia alda daitezke.</p>
+            <p>Ez sartu pazienteen izenik, historia klinikorik edo osasun-daturik kontuko eremuetan edo produktuen deskribapenetan.</p>
+            <p>Webgune hau Arrueren ikasketa-proiektuaren parte da. Benetako zerbitzu gisa erabili aurretik, tratamenduaren arduraduna, kontaktua, helburuak, lege-oinarria, kontserbazio-epeak eta eskubideak erabiltzeko bidea zehaztu eta pribatutasun-informazioa osatu behar dira.</p>
+        </section>
+        <section id="irudiak" class="about-section image-credits">
+            <h2>Irudien kredituak</h2>
+            <p>Argazkiak hortz-lanaren irudi adierazgarriak dira; ez dira Arrueren instalazioen edo benetako produktuen argazkiak.</p>
+            <ul>
+                <li>Hortz-eredua: <a href="https://unsplash.com/photos/a-close-up-of-a-tooth-model-on-a-table-qkx-vLxgF8Y">Ozkan Guner · Unsplash</a>.</li>
+                <li>Hortz-moldeak: <a href="https://www.pexels.com/photo/dental-prosthesis-on-blue-background-7800550/">Nadezhda Moryak · Pexels</a>.</li>
+                <li>Hortz-protesia: <a href="https://www.pexels.com/photo/close-up-of-fake-teeth-lying-on-a-glass-surface-12712256/">Arvind Philomin · Pexels</a>.</li>
+            </ul>
+        </section>
+    </main>
+    <footer class="site-footer"><b>Arrue Hortz Sintetikoak</b><p>Diseinutik fabrikaziora. Euskal Herritik Europara.</p><a href="index.php">Itzuli hasierara</a></footer>
 </body>
+
 </html>

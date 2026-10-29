@@ -1,6 +1,16 @@
 <?php
 require_once __DIR__ . '/helpers.php';
 
+if ($action === '') {
+    include __DIR__ . '/company-intro.php';
+}
+?>
+<section id="katalogoa" class="catalog-section" aria-labelledby="catalog-title">
+    <p class="eyebrow">HORTZ-IRTENBIDEAK</p>
+    <h2 id="catalog-title">Arrueren katalogoa</h2>
+    <p>Kliniketarako hortz sintetikoak eta hortz-ereduak.</p>
+    <p class="catalog-note">Ikasketa-proiektuko katalogoa: produktuak, prezioak eta irudiak adibideak dira.</p>
+<?php
 $keyword = is_string($_GET['keyword'] ?? null) ? $_GET['keyword'] : '';
 $pattern = '%' . $keyword . '%';
 $statement = mysqli_prepare($conx, 'SELECT * FROM produktuak WHERE izena LIKE ? OR deskripzioa LIKE ?');
@@ -11,11 +21,12 @@ mysqli_stmt_close($statement);
 if (empty($products)) {
 ?>
 <fieldset class="empty-catalog">
-    <legend>Ez dago produkturik katalogoan <?php echo htmlText($keyword); ?> deitzen denik</legend>
+    <legend><?php echo $keyword === '' ? 'Katalogoa prestatzen ari gara' : 'Ez da bilaketarekin bat datorren produkturik aurkitu'; ?></legend>
+    <?php if ($keyword !== ''): ?><p>Bilaketa: <?php echo htmlText($keyword); ?></p><p><a href="index.php#katalogoa">Ikusi katalogo osoa</a></p><?php endif; ?>
     <?php if (administrator()): ?>
         <p><a href="index.php?action=updel">Eguneratu katalogoa.</a></p>
     <?php else: ?>
-        <h3>Enpresaren hasierako orria</h3>
+        <p>Ezagutu gure <a href="about.html">diseinu- eta fabrikazio-prozesua</a>.</p>
     <?php endif; ?>
 </fieldset>
 <?php
@@ -26,7 +37,7 @@ if (empty($products)) {
 <article class="product-card">
     <fieldset class="product-image">
         <a href="<?php echo htmlText($imageUrl); ?>">
-            <img src="<?php echo htmlText($imageUrl); ?>" alt="<?php echo htmlText($product['izena']); ?>">
+            <img src="<?php echo htmlText($imageUrl); ?>" alt="<?php echo htmlText($product['izena']); ?>" loading="lazy">
         </a>
     </fieldset>
     <div class="product-details">
@@ -45,3 +56,4 @@ if (empty($products)) {
     }
 }
 ?>
+</section>

@@ -1,0 +1,11 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 0
+    paths:
+        - erronka2_web
+        - tools
+        - tests
+    tmpDir: .phpstan-cache
+    reportUnmatchedIgnoredErrors: true

@@ -1,0 +1,126 @@
+{
+  "kontrolak": [
+    {
+      "proba": "HTTP index.php",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "Katalogoa",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP index.php?action=search&keyword=produktu+1",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "Bilaketa",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP index.php?action=register",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP index.php?action=login",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP index.php?action=description&pic_id=1",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP index.php?action=ez-da-existitzen",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP index.php?action%5B%5D=login",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP about.html",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "index.php DOCTYPE",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "index.php hizkuntza",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "index.php dokumentu-egitura",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "Logotipoaren alt",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "Bilaketaren etiketa",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "index.php atributu zaharkituak kenduta",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "Diseinurako taula kenduta",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "about.html DOCTYPE",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "about.html hizkuntza",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "about.html dokumentu-egitura",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "about.html bi eremuen etiketak",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "about.html atributu zaharkituak kenduta",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "Gonbidatuaren sarbidea account",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "Gonbidatuaren sarbidea updel",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "Laborategiko saio-hasiera",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP index.php?action=account",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP index.php?action=updel",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "HTTP index.php?action=logout",
+      "emaitza": "GAINDITUTA"
+    },
+    {
+      "proba": "Saio-amaiera",
+      "emaitza": "GAINDITUTA"
+    }
+  ],
+  "kopurua": 29,
+  "oharra": "Ez da SonarQube-ren berranalisi bat.",
+  "css": {
+    "unitaterik_gabeko_tamainak": 0,
+    "familia_generikoa_duten_iturrien_deklarazioak": 6
+  }
+}

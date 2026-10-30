@@ -1,0 +1,313 @@
+{
+  "date": "2026-10-29T09:16:02+00:00",
+  "scope": "Isolated Docker HTTP + MySQL security regression",
+  "count": 76,
+  "passed": true,
+  "checks": [
+    {
+      "test": "Home with real database",
+      "passed": true
+    },
+    {
+      "test": "Session cookie HttpOnly and SameSite",
+      "passed": true
+    },
+    {
+      "test": "CSP and anti-sniff headers",
+      "passed": true
+    },
+    {
+      "test": "Authenticated content is not cached",
+      "passed": true
+    },
+    {
+      "test": "Guest cannot access account",
+      "passed": true
+    },
+    {
+      "test": "Guest cannot access updel",
+      "passed": true
+    },
+    {
+      "test": "Guest cannot access description&pic_id=1",
+      "passed": true
+    },
+    {
+      "test": "Direct sensitive path blocked: includes/main.php",
+      "passed": true
+    },
+    {
+      "test": "Direct sensitive path blocked: includes/account.php",
+      "passed": true
+    },
+    {
+      "test": "Direct sensitive path blocked: conf.php",
+      "passed": true
+    },
+    {
+      "test": "Direct sensitive path blocked: images/test.php",
+      "passed": true
+    },
+    {
+      "test": "Reflected search XSS encoded",
+      "passed": true
+    },
+    {
+      "test": "Search SQL injection does not reveal catalog",
+      "passed": true
+    },
+    {
+      "test": "Action is allowlisted",
+      "passed": true
+    },
+    {
+      "test": "Login PATH_INFO XSS protection (HTTP 404)",
+      "passed": true
+    },
+    {
+      "test": "Missing login CSRF rejected",
+      "passed": true
+    },
+    {
+      "test": "Missing registration CSRF rejected",
+      "passed": true
+    },
+    {
+      "test": "Another session cannot reuse CSRF",
+      "passed": true
+    },
+    {
+      "test": "Strict mode rejects attacker-chosen session IDs",
+      "passed": true
+    },
+    {
+      "test": "Register real account with profile image",
+      "passed": true
+    },
+    {
+      "test": "Profile image uses a safe random filename",
+      "passed": true
+    },
+    {
+      "test": "Profile upload served as image, with nosniff",
+      "passed": true
+    },
+    {
+      "test": "Registration password stored as verified hash",
+      "passed": true
+    },
+    {
+      "test": "Quotes and HTML stored as data, not SQL",
+      "passed": true
+    },
+    {
+      "test": "Duplicate registration rejected",
+      "passed": true
+    },
+    {
+      "test": "Registration redisplay encodes stored form values",
+      "passed": true
+    },
+    {
+      "test": "Oversized password cannot create a truncated credential",
+      "passed": true
+    },
+    {
+      "test": "Malformed password array rejected",
+      "passed": true
+    },
+    {
+      "test": "Login SQL injection fails",
+      "passed": true
+    },
+    {
+      "test": "Registered account can log in",
+      "passed": true
+    },
+    {
+      "test": "Session ID rotated at login",
+      "passed": true
+    },
+    {
+      "test": "CSRF token rotated at login",
+      "passed": true
+    },
+    {
+      "test": "Member cannot read admin route updel",
+      "passed": true
+    },
+    {
+      "test": "Member cannot POST admin route updel",
+      "passed": true
+    },
+    {
+      "test": "Member cannot read admin route description&pic_id=1",
+      "passed": true
+    },
+    {
+      "test": "Member cannot POST admin route description&pic_id=1",
+      "passed": true
+    },
+    {
+      "test": "GET logout cannot change session",
+      "passed": true
+    },
+    {
+      "test": "Password change requires current password",
+      "passed": true
+    },
+    {
+      "test": "Password change without CSRF rejected",
+      "passed": true
+    },
+    {
+      "test": "Valid password change succeeds",
+      "passed": true
+    },
+    {
+      "test": "Changed password hashed and old password invalid",
+      "passed": true
+    },
+    {
+      "test": "Parallel session invalidated after password change",
+      "passed": true
+    },
+    {
+      "test": "Old session cannot be replayed after password change",
+      "passed": true
+    },
+    {
+      "test": "Old password cannot log in",
+      "passed": true
+    },
+    {
+      "test": "New password can log in",
+      "passed": true
+    },
+    {
+      "test": "Admin create account succeeds",
+      "passed": true
+    },
+    {
+      "test": "Admin-created password hashed",
+      "passed": true
+    },
+    {
+      "test": "Legacy stored username is encoded in admin table and delete action",
+      "passed": true
+    },
+    {
+      "test": "Admin cannot create duplicate account",
+      "passed": true
+    },
+    {
+      "test": "Admin create account requires CSRF",
+      "passed": true
+    },
+    {
+      "test": "Product creation requires CSRF",
+      "passed": true
+    },
+    {
+      "test": "Product and real image upload succeed",
+      "passed": true
+    },
+    {
+      "test": "Upload filename replaced by safe random image name",
+      "passed": true
+    },
+    {
+      "test": "Product upload served as image, with nosniff",
+      "passed": true
+    },
+    {
+      "test": "Stored catalog XSS encoded",
+      "passed": true
+    },
+    {
+      "test": "Stored admin product name encoded",
+      "passed": true
+    },
+    {
+      "test": "Fake image MIME and executable upload rejected",
+      "passed": true
+    },
+    {
+      "test": "Oversized image rejected",
+      "passed": true
+    },
+    {
+      "test": "Description requires CSRF",
+      "passed": true
+    },
+    {
+      "test": "Description edit succeeds",
+      "passed": true
+    },
+    {
+      "test": "Description textarea XSS encoded",
+      "passed": true
+    },
+    {
+      "test": "SQL injection in product ID rejected",
+      "passed": true
+    },
+    {
+      "test": "Malformed numeric input rejected",
+      "passed": true
+    },
+    {
+      "test": "Product deletion requires CSRF",
+      "passed": true
+    },
+    {
+      "test": "Product deletion succeeds",
+      "passed": true
+    },
+    {
+      "test": "Deleted product absent from database",
+      "passed": true
+    },
+    {
+      "test": "SQL injection in delete target cannot delete accounts",
+      "passed": true
+    },
+    {
+      "test": "User deletion requires CSRF",
+      "passed": true
+    },
+    {
+      "test": "Admin deletes account",
+      "passed": true
+    },
+    {
+      "test": "Deleted account session immediately rejected",
+      "passed": true
+    },
+    {
+      "test": "Logout requires CSRF",
+      "passed": true
+    },
+    {
+      "test": "POST logout succeeds",
+      "passed": true
+    },
+    {
+      "test": "Logged-out session cannot be replayed",
+      "passed": true
+    },
+    {
+      "test": "HTTPS deployment configuration sets Secure cookie",
+      "passed": true
+    },
+    {
+      "test": "Idle timeout enforced by server over HTTP",
+      "passed": true
+    },
+    {
+      "test": "Absolute timeout enforced despite continuing activity",
+      "passed": true
+    }
+  ],
+  "temporary_data_cleaned": true
+}

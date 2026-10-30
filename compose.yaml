@@ -1,0 +1,79 @@
+name: arrue-web
+
+x-app-environment: &app-environment
+  DB_HOST: db
+  DB_PORT: "3306"
+  DB_NAME: ${DB_NAME:-BDweb}
+  DB_USER: arrue
+  DB_PASSWORD: ${MYSQL_PASSWORD:?Copia .env.example a .env y configura las contraseñas}
+  SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-0}
+  SESSION_IDLE_SECONDS: ${SESSION_IDLE_SECONDS:-1800}
+  SESSION_ABSOLUTE_SECONDS: ${SESSION_ABSOLUTE_SECONDS:-28800}
+
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-BDweb}
+      MYSQL_USER: arrue
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Configura MYSQL_PASSWORD en .env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Configura MYSQL_ROOT_PASSWORD en .env}
+    volumes:
+      - database:/var/lib/mysql
+      - ./bdweb.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: [CMD-SHELL, 'MYSQL_PWD="$${MYSQL_PASSWORD}" mysql -h127.0.0.1 -u"$${MYSQL_USER}" "$${MYSQL_DATABASE}" -e "SELECT COUNT(*) FROM users" >/dev/null 2>&1']
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    restart: unless-stopped
+  web: &web-service
+    build: .
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8080}:80"
+    environment: *app-environment
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - images:/var/www/html/images
+      - profiles:/var/www/html/perfiles
+    healthcheck:
+      test: [CMD, php, -r, "exit(str_contains(get_headers('http://127.0.0.1/index.php')[0], '200') ? 0 : 1);"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+  session-web:
+    <<: *web-service
+    profiles: [test]
+    ports: []
+    environment:
+      <<: *app-environment
+      SESSION_COOKIE_SECURE: "1"
+      SESSION_IDLE_SECONDS: "2"
+      SESSION_ABSOLUTE_SECONDS: "5"
+  tests:
+    profiles: [test]
+    build: .
+    command: [php, /opt/arrue-tools/http-security-test.php]
+    environment:
+      <<: *app-environment
+      APP_BASE_URL: http://web
+      APP_TESTING: "1"
+      APP_WEB_ROOT: /var/www/html
+    depends_on:
+      web:
+        condition: service_healthy
+      session-web:
+        condition: service_healthy
+    volumes:
+      - images:/var/www/html/images
+      - profiles:/var/www/html/perfiles
+      - ./build:/evidence
+
+volumes:
+  database:
+  images:
+  profiles:

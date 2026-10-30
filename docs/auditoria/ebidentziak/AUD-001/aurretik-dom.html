@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="eu"><head><meta charset="utf-8"><title>AUD-001 — aurretik</title></head><body><h1>AUD-001 — aurretik</h1><p>Saio-hasierako ikuspegiaren proba isolatua. Ez da web osoaren HTTP proba.</p><p id="xss-egoera" style="padding:20px;border:3px solid #555;font-size:24px">XSS EXEKUTATU DA</p><p>PHP_SELF aldagaian komatxoak eta script etiketa sartu dira. Ez da kanpoko konexiorik egiten.</p>
+  <div align="center">
+    <fieldset style="width:300;">
+    <legend><b>Login</b></legend>
+        <form action="/index.php/"><script>document.getElementById("xss-egoera").textContent="XSS EXEKUTATU DA";</script><span data-x="?action=login" method="post">
+            <br>
+            Username/Email: <input type="text" name="username"><br>
+            Password: <input type="password" name="password"><br>
+            <br><input type="submit" name="submit" value="Login"><br>
+        
+    </span></form></fieldset>
+  </div>
+
+  </body></html>

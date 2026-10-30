@@ -1,0 +1,14 @@
+/vendor/
+/.phpunit.cache/
+/.phpstan-cache/
+/.composer/
+/build/
+.env
+.env.*
+!.env.example
+!.env.test.example
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

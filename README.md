@@ -80,6 +80,7 @@ php -d extension=mysqli -S 127.0.0.1:8000 -t erronka2_web erronka2_web/router.ph
 - [Pipeline de GitHub Actions](docs/PIPELINEA.md).
 - [Historial de auditoría](docs/auditoria/README.md).
 - [Procedimiento de trabajo en equipo](CONTRIBUTING.md).
+- [Ramas, contribuciones y evidencias de la issue #16](docs/GIT-TALDE-LANA.md).
 
 La CI ejecuta PHPStan y PHPUnit en PHP 8.3/8.5 y la suite HTTP en Compose.
 Las pruebas documentan los flujos cubiertos; no constituyen una certificación

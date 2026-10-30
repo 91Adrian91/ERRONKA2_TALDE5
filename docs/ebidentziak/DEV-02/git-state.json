@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-30",
+  "repository": "91Adrian91/ERRONKA2_TALDE5",
+  "base_branch": "main",
+  "base_sha": "b6271306b5bcb7b234c7364895cf1ae1f731f342",
+  "snapshot_head": "309ea7011abaf7f22646ee8a88bc69cde6047a10",
+  "source_branch": "web/desarrollo",
+  "commits_ahead_at_snapshot": 8,
+  "authors": {
+    "AnderAzpiazu": 8
+  },
+  "commits": [
+    {
+      "sha": "309ea7011abaf7f22646ee8a88bc69cde6047a10",
+      "author": "AnderAzpiazu",
+      "subject": "fix: webaren saioak eta CSRF babestu, Docker eta HTTP probak gehitu"
+    },
+    {
+      "sha": "6622351d4f8fec7113d7a97ac00bbe7ef0b79ec6",
+      "author": "AnderAzpiazu",
+      "subject": "feat: Arrueren edukiak, argazkiak eta diseinu xumea eguneratu"
+    },
+    {
+      "sha": "6a7f71abc1b12c954af6499bca4ef694a8b45422",
+      "author": "AnderAzpiazu",
+      "subject": "docs: Word txostena gaika antolatu eta azken egoera bateratu"
+    },
+    {
+      "sha": "4180982a8c934a56223425d2741ae71854b71a58",
+      "author": "AnderAzpiazu",
+      "subject": "fix: SonarSource analisia zerora jaitsi eta Word ebidentziak gehitu"
+    },
+    {
+      "sha": "7b05a2a3f5007c8ff3f7bfd7af272439c42ff363",
+      "author": "AnderAzpiazu",
+      "subject": "fix: SonarQube abisuak zuzendu eta Word dokumentua eguneratu"
+    },
+    {
+      "sha": "4f79186543f89dfbcc2c6cd096fc92e8ac5bb78b",
+      "author": "AnderAzpiazu",
+      "subject": "fix: AUD-001 login formularioaren XSS puntua zuzendu eta dokumentatu"
+    },
+    {
+      "sha": "8ff97b4b700ccb2bd17988adf2437482d2f96c8e",
+      "author": "AnderAzpiazu",
+      "subject": "ci: GitHub Actions, PHPStan eta unitate-probak konfiguratu"
+    },
+    {
+      "sha": "14b3d9df600c3b62e7688860126e011b2ad76ede",
+      "author": "AnderAzpiazu",
+      "subject": "chore: irakasleen jatorrizko PHP webgunea gehitu"
+    }
+  ],
+  "main_protected_at_snapshot": false,
+  "repository_rulesets_at_snapshot": [],
+  "connected_account_can_administer": false,
+  "ruleset_proposal_applied": false,
+  "peer_review": "pending; user asked to request it later",
+  "ci_verified": {
+    "sha": "309ea7011abaf7f22646ee8a88bc69cde6047a10",
+    "run_url": "https://github.com/91Adrian91/ERRONKA2_TALDE5/actions/runs/40859846009",
+    "conclusion": "success",
+    "jobs": [
+      "PHP checks (8.3)",
+      "PHP checks (8.5)",
+      "HTTP security and Docker"
+    ]
+  }
+}
